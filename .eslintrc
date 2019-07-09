@@ -1,7 +1,0 @@
-{
-    "root": true,
-    "extends": [
-        "./cfg/airbnb.eslintrc",
-        "./cfg/my.eslintrc"
-    ]
-}
