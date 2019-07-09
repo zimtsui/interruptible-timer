@@ -2,20 +2,20 @@ import Promise from 'bluebird';
 
 const delay = (ms, cb) => {
     let stop;
-    const promise = new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => {
-            if (cb) cb();
+    const timeout = new Promise((resolve, reject) => {
+        const timer = setTimeout(() => {
+            cb && cb();
             resolve();
         }, ms);
         stop = () => {
-            clearTimeout(timeout);
+            clearTimeout(timer);
             const err = new Error('interrupted');
-            if (cb) cb(err);
+            cb && cb(err);
             reject(err);
         };
     });
     return {
-        timeout: promise,
+        timeout,
         stop,
     };
 };
