@@ -17,5 +17,6 @@ test('rejection test', async t => {
         timer.interrupt();
     });
     await assert.rejects(timer.promise);
+    await timer.promise.catch((err: Error) => t.log(err.stack));
     assert(cb.args[0][0] instanceof Error);
 });

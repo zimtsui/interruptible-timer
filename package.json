@@ -30,6 +30,7 @@
         "source-map-support": "^0.5.12"
     },
     "ava": {
-        "failWithoutAssertions": false
+        "failWithoutAssertions": false,
+        "verbose": true
     }
 }

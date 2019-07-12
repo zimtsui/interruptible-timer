@@ -68,6 +68,9 @@ ava_1.default('rejection test', function (t) { return __awaiter(_this, void 0, v
                 return [4, assert.rejects(timer.promise)];
             case 1:
                 _a.sent();
+                return [4, timer.promise.catch(function (err) { return t.log(err.stack); })];
+            case 2:
+                _a.sent();
                 assert(cb.args[0][0] instanceof Error);
                 return [2];
         }
