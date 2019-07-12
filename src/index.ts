@@ -5,7 +5,7 @@ class Delay {
     state: 'RUNNING' | 'TIMES_OUT' | 'INTERRUPTED';
     private e: EventEmitter;
     private timer: NodeJS.Timeout;
-    promise: Promise<unknown>;
+    promise: Promise<void>;
     constructor(ms: number, cb) {
         this.e = new EventEmitter();
         this.state = 'RUNNING';
