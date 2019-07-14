@@ -1,3 +1,6 @@
+# Customs
+/ls.*
+
 # Logs
 logs
 *.log

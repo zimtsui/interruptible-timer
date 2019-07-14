@@ -138,8 +138,8 @@
         "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
       },
       "/home/zim/interruptible-timer/src/index.ts": {
-        "version": "dd0f3e5b49ca996ff7be5e7d56532042aa55e63e27891bec5511a0e96b20faf3",
-        "signature": "c152930a11a5a7a5090aca8a76aae5da6844960d8c2755b73bf6c3b046edbf3d"
+        "version": "b025e2428627df72c633958b5ba168f5e7818f1e532077a066f7c1f8e116e434",
+        "signature": "4c0d08bfeb8b26474dd73194f03a7fb59833a6f14ad604fe6450146cdc0bd456"
       },
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts": {
         "version": "41984c1a67108179630189847e04b2f82d62ccc6e7b3d8fc826bcf8e86770ed4",
