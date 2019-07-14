@@ -8,7 +8,7 @@ declare class Delay {
     private e;
     private timer;
     promise: Promise<void>;
-    constructor(ms: number, cb: () => void);
+    constructor(ms: number, cb: (err?: Error) => void);
     interrupt(): void;
 }
 export default Delay;

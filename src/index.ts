@@ -13,7 +13,7 @@ class Delay {
     private e: EventEmitter;
     private timer: NodeJS.Timeout;
     promise: Promise<void>;
-    constructor(ms: number, cb: () => void) {
+    constructor(ms: number, cb: (err?: Error) => void) {
         this.e = new EventEmitter();
         this.state = States.RUNNING;
         this.timer = setTimeout(() => {
