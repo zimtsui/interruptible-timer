@@ -1,4 +1,4 @@
-import { Promise as BPromise } from 'bluebird';
+import BPromise from 'bluebird';
 import assert = require('assert');
 import EventEmitter = require('events');
 

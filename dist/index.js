@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var bluebird_1 = require("bluebird");
+var bluebird_1 = __importDefault(require("bluebird"));
 var assert = require("assert");
 var EventEmitter = require("events");
 var States;
@@ -22,7 +25,7 @@ var Delay = (function () {
             this.e.once(States.TIMES_OUT, cb);
             this.e.once(States.INTERRUPTED, cb);
         }
-        this.promise = new bluebird_1.Promise(function (resolve, reject) {
+        this.promise = new bluebird_1.default(function (resolve, reject) {
             _this.e.once(States.TIMES_OUT, resolve);
             _this.e.once(States.INTERRUPTED, reject);
         });

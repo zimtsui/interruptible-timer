@@ -138,7 +138,7 @@
         "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
       },
       "/home/zim/interruptible-timer/src/index.ts": {
-        "version": "c7979b08fd790067aa65a0fab2cf275015ba6144e4f4c9a1c5482a0da7179bbc",
+        "version": "a1eb3a41e6ed257c47a4839e6db64bd5978b4ca0f1241ea921d7eb5c7edd4f03",
         "signature": "b0611ce9aa3ece99b23e616593304125defe080f722a435969872e3f2f985e68"
       },
       "/home/zim/interruptible-timer/src/ls.ts": {
@@ -1238,7 +1238,6 @@
       "/home/zim/interruptible-timer/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/events/index.d.ts",
-      "/home/zim/interruptible-timer/src/index.ts",
       "/home/zim/interruptible-timer/src/ls.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
@@ -1286,7 +1285,8 @@
       "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/minimatch/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/glob/index.d.ts",
-      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts"
+      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts",
+      "/home/zim/interruptible-timer/src/index.ts"
     ]
   },
   "version": "3.5.3"
