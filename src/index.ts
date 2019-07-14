@@ -3,7 +3,9 @@ import assert = require('assert');
 import EventEmitter = require('events');
 
 enum States {
-    RUNNING, TIMES_OUT, INTERRUPTED,
+    RUNNING = 'RUNNING',
+    TIMES_OUT = 'TIMES_OUT',
+    INTERRUPTED = 'INTERRUPTED',
 }
 
 class Delay {
@@ -11,22 +13,22 @@ class Delay {
     private e: EventEmitter;
     private timer: NodeJS.Timeout;
     promise: Promise<void>;
-    constructor(ms: number, cb) {
+    constructor(ms: number, cb: () => void) {
         this.e = new EventEmitter();
         this.state = States.RUNNING;
         this.timer = setTimeout(() => {
             this.state = States.TIMES_OUT;
-            this.e.emit(States.TIMES_OUT.toString());
+            this.e.emit(States.TIMES_OUT);
         }, ms);
 
         if (cb) {
-            this.e.once(States.TIMES_OUT.toString(), cb);
-            this.e.once(States.INTERRUPTED.toString(), cb);
+            this.e.once(States.TIMES_OUT, cb);
+            this.e.once(States.INTERRUPTED, cb);
         }
 
         this.promise = new BPromise((resolve, reject) => {
-            this.e.once(States.TIMES_OUT.toString(), resolve);
-            this.e.once(States.INTERRUPTED.toString(), reject);
+            this.e.once(States.TIMES_OUT, resolve);
+            this.e.once(States.INTERRUPTED, reject);
         });
         this.promise.catch(() => { });
     }
@@ -34,7 +36,7 @@ class Delay {
         assert(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
         clearTimeout(this.timer);
-        this.e.emit(States.INTERRUPTED.toString(), new Error('interrupted'));
+        this.e.emit(States.INTERRUPTED, new Error('interrupted'));
     }
 };
 

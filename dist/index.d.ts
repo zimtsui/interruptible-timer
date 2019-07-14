@@ -4,6 +4,7 @@ declare enum States {
     INTERRUPTED = 2
 }
 declare class Delay {
+    a: any;
     state: States;
     private e;
     private timer;

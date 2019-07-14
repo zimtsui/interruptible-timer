@@ -138,8 +138,8 @@
         "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
       },
       "/home/zim/interruptible-timer/src/index.ts": {
-        "version": "b025e2428627df72c633958b5ba168f5e7818f1e532077a066f7c1f8e116e434",
-        "signature": "4c0d08bfeb8b26474dd73194f03a7fb59833a6f14ad604fe6450146cdc0bd456"
+        "version": "dcd5d14bc826544a5c5dceeda2643789a2eaead56e987cf9c0a4ff0d02232035",
+        "signature": "fbbd7182292028029dab51df2eea47119db71b17fd8f82b588a478f04b57b68c"
       },
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts": {
         "version": "41984c1a67108179630189847e04b2f82d62ccc6e7b3d8fc826bcf8e86770ed4",
@@ -338,10 +338,12 @@
       ],
       "sourceMap": true,
       "removeComments": true,
-      "strict": false,
+      "strict": true,
+      "noImplicitAny": false,
       "noUnusedLocals": true,
       "noImplicitReturns": true,
       "noFallthroughCasesInSwitch": true,
+      "esModuleInterop": true,
       "composite": true,
       "declaration": true,
       "rootDir": "/home/zim/interruptible-timer/src/",
@@ -1228,6 +1230,7 @@
       "/home/zim/interruptible-timer/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/events/index.d.ts",
+      "/home/zim/interruptible-timer/src/index.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/async_hooks.d.ts",
@@ -1274,8 +1277,7 @@
       "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/minimatch/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/glob/index.d.ts",
-      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts",
-      "/home/zim/interruptible-timer/src/index.ts"
+      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts"
     ]
   },
   "version": "3.5.3"

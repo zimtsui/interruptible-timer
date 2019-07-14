@@ -1,19 +1,22 @@
 {
     "compilerOptions": {
         /* Basic Options */
-        "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
-        "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+        "target": "es5",
+        "module": "commonjs",
         "lib": [
             "esnext"
-        ], /* Specify library files to be included in the compilation. */
-        // "declarationMap": true,             /* Generates a sourcemap for each corresponding '.d.ts' file. */
-        "sourceMap": true, /* Generates corresponding '.map' file. */
-        "removeComments": true, /* Do not emit comments to output. */
+        ],
+        // "declarationMap": true,   
+        "sourceMap": true,
+        "removeComments": true,
         /* Strict Type-Checking Options */
-        "strict": false, /* Enable all strict type-checking options. */
+        "strict": true,
+        "noImplicitAny": false,
         /* Additional Checks */
-        "noUnusedLocals": true, /* Report errors on unused locals. */
-        "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-        "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        /* Module Resolution Options */
+        "esModuleInterop": true
     }
 }
