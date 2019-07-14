@@ -1,15 +1,14 @@
 declare enum States {
-    RUNNING = 0,
-    TIMES_OUT = 1,
-    INTERRUPTED = 2
+    RUNNING = "RUNNING",
+    TIMES_OUT = "TIMES_OUT",
+    INTERRUPTED = "INTERRUPTED"
 }
 declare class Delay {
-    a: any;
     state: States;
     private e;
     private timer;
     promise: Promise<void>;
-    constructor(ms: number, cb: any);
+    constructor(ms: number, cb: () => void);
     interrupt(): void;
 }
 export default Delay;

@@ -34,13 +34,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var bluebird_1 = require("bluebird");
-var ava_1 = require("ava");
+var ava_1 = __importDefault(require("ava"));
 var sinon = require("sinon");
 var assert = require("assert");
-var index_1 = require("../../dist/index");
+var index_1 = __importDefault(require("../../dist/index"));
 ava_1.default('resolution test', function (t) { return __awaiter(_this, void 0, void 0, function () {
     var cb;
     return __generator(this, function (_a) {

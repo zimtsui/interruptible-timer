@@ -138,8 +138,12 @@
         "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
       },
       "/home/zim/interruptible-timer/src/index.ts": {
-        "version": "dcd5d14bc826544a5c5dceeda2643789a2eaead56e987cf9c0a4ff0d02232035",
-        "signature": "fbbd7182292028029dab51df2eea47119db71b17fd8f82b588a478f04b57b68c"
+        "version": "c7979b08fd790067aa65a0fab2cf275015ba6144e4f4c9a1c5482a0da7179bbc",
+        "signature": "b0611ce9aa3ece99b23e616593304125defe080f722a435969872e3f2f985e68"
+      },
+      "/home/zim/interruptible-timer/src/ls.ts": {
+        "version": "bbd9e65efaa52613b29fd2710002bbe6636daf995fc93d3eead4ff923934ed14",
+        "signature": "609e3f21f7d7bdc09700ff8ea5c8131701ed736f07d53b5d0277b20a8435f127"
       },
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts": {
         "version": "41984c1a67108179630189847e04b2f82d62ccc6e7b3d8fc826bcf8e86770ed4",
@@ -491,6 +495,10 @@
         "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/events.d.ts",
+        "/home/zim/interruptible-timer/node_modules/@types/node/util.d.ts",
+        "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/home/zim/interruptible-timer/src/ls.ts": [
         "/home/zim/interruptible-timer/node_modules/@types/node/util.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1231,6 +1239,7 @@
       "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/events/index.d.ts",
       "/home/zim/interruptible-timer/src/index.ts",
+      "/home/zim/interruptible-timer/src/ls.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/async_hooks.d.ts",
