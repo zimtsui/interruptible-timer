@@ -142,8 +142,8 @@
         "signature": "b0611ce9aa3ece99b23e616593304125defe080f722a435969872e3f2f985e68"
       },
       "/home/zim/interruptible-timer/src/ls.ts": {
-        "version": "bbd9e65efaa52613b29fd2710002bbe6636daf995fc93d3eead4ff923934ed14",
-        "signature": "609e3f21f7d7bdc09700ff8ea5c8131701ed736f07d53b5d0277b20a8435f127"
+        "version": "22d8e06fcde03ce41927d98d7886c9ef5cfe83b7cf277f76c7e9eaa9447456a9",
+        "signature": "51f00680f98cf324838027bbbfb88110ccbeddd72c25d21d6da9dc6e712d5037"
       },
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts": {
         "version": "41984c1a67108179630189847e04b2f82d62ccc6e7b3d8fc826bcf8e86770ed4",
@@ -335,7 +335,7 @@
       }
     },
     "options": {
-      "target": 1,
+      "target": 2,
       "module": 1,
       "lib": [
         "lib.esnext.d.ts"
@@ -1238,6 +1238,7 @@
       "/home/zim/interruptible-timer/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/events/index.d.ts",
+      "/home/zim/interruptible-timer/src/index.ts",
       "/home/zim/interruptible-timer/src/ls.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
@@ -1285,8 +1286,7 @@
       "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/minimatch/index.d.ts",
       "/home/zim/interruptible-timer/node_modules/@types/glob/index.d.ts",
-      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts",
-      "/home/zim/interruptible-timer/src/index.ts"
+      "/home/zim/interruptible-timer/node_modules/@types/sinon/ts3.1/index.d.ts"
     ]
   },
   "version": "3.5.3"
