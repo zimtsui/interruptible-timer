@@ -2,7 +2,7 @@ import { Promise as BPromise } from 'bluebird';
 import test from 'ava';
 import sinon = require('sinon');
 import assert = require('assert');
-import Delay from '../../dist/index';
+import Delay from '../..';
 
 test('resolution test', async t => {
     const cb = sinon.fake();

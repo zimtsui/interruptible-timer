@@ -15,15 +15,15 @@ const bluebird_1 = require("bluebird");
 const ava_1 = __importDefault(require("ava"));
 const sinon = require("sinon");
 const assert = require("assert");
-const index_1 = __importDefault(require("../../dist/index"));
+const __1 = __importDefault(require("../.."));
 ava_1.default('resolution test', (t) => __awaiter(this, void 0, void 0, function* () {
     const cb = sinon.fake();
-    yield new index_1.default(1000, cb).promise;
+    yield new __1.default(1000, cb).promise;
     assert(cb.args[0].length === 0);
 }));
 ava_1.default('rejection test', (t) => __awaiter(this, void 0, void 0, function* () {
     const cb = sinon.fake();
-    let timer = new index_1.default(2 * 1000, cb);
+    let timer = new __1.default(2 * 1000, cb);
     bluebird_1.Promise.delay(1 * 1000).then(() => {
         timer.interrupt();
     });
