@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var bluebird_1 = __importDefault(require("bluebird"));
-var assert = require("assert");
-var EventEmitter = require("events");
+var assert_1 = __importDefault(require("assert"));
+var events_1 = __importDefault(require("events"));
 var States;
 (function (States) {
     States["RUNNING"] = "RUNNING";
@@ -15,7 +15,7 @@ var States;
 var Delay = (function () {
     function Delay(ms, cb) {
         var _this = this;
-        this.e = new EventEmitter();
+        this.e = new events_1.default();
         this.state = States.RUNNING;
         this.timer = setTimeout(function () {
             _this.state = States.TIMES_OUT;
@@ -32,7 +32,7 @@ var Delay = (function () {
         this.promise.catch(function () { });
     }
     Delay.prototype.interrupt = function () {
-        assert(this.state === States.RUNNING);
+        assert_1.default(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
         clearTimeout(this.timer);
         this.e.emit(States.INTERRUPTED, new Error('interrupted'));

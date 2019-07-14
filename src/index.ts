@@ -1,6 +1,6 @@
 import BPromise from 'bluebird';
-import assert = require('assert');
-import EventEmitter = require('events');
+import assert from 'assert';
+import EventEmitter from 'events';
 
 enum States {
     RUNNING = 'RUNNING',
