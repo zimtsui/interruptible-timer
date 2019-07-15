@@ -12,7 +12,7 @@ var States;
     States["TIMES_OUT"] = "TIMES_OUT";
     States["INTERRUPTED"] = "INTERRUPTED";
 })(States || (States = {}));
-class Delay {
+class Timer {
     constructor(ms, cb) {
         this.e = new events_1.default();
         this.state = States.RUNNING;
@@ -38,5 +38,5 @@ class Delay {
     }
 }
 ;
-exports.default = Delay;
+exports.default = Timer;
 //# sourceMappingURL=index.js.map

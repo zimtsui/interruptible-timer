@@ -3,7 +3,7 @@ declare enum States {
     TIMES_OUT = "TIMES_OUT",
     INTERRUPTED = "INTERRUPTED"
 }
-declare class Delay {
+declare class Timer {
     state: States;
     private e;
     private timer;
@@ -11,4 +11,4 @@ declare class Delay {
     constructor(ms: number, cb: (err?: Error) => void);
     interrupt(): void;
 }
-export default Delay;
+export default Timer;

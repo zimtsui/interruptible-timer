@@ -8,7 +8,7 @@ enum States {
     INTERRUPTED = 'INTERRUPTED',
 }
 
-class Delay {
+class Timer {
     state: States;
     private e: EventEmitter;
     private timer: NodeJS.Timeout;
@@ -40,4 +40,4 @@ class Delay {
     }
 };
 
-export default Delay;
+export default Timer;
