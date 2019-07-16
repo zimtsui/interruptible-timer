@@ -1,4 +1,4 @@
-import BPromise from 'bluebird';
+import Bluebird from 'bluebird';
 import assert from 'assert';
 import EventEmitter from 'events';
 
@@ -9,11 +9,12 @@ enum States {
 }
 
 class Timer {
-    state: States;
+    private state: States;
     private e: EventEmitter;
     private timer: NodeJS.Timeout;
     promise: Promise<void>;
-    constructor(ms: number, cb: (err?: Error) => void) {
+
+    constructor(ms: number, cb: (err?: Error) => void = () => { }) {
         this.e = new EventEmitter();
         this.state = States.RUNNING;
         this.timer = setTimeout(() => {
@@ -21,17 +22,16 @@ class Timer {
             this.e.emit(States.TIMES_OUT);
         }, ms);
 
-        if (cb) {
-            this.e.once(States.TIMES_OUT, cb);
-            this.e.once(States.INTERRUPTED, cb);
-        }
+        this.e.once(States.TIMES_OUT, cb);
+        this.e.once(States.INTERRUPTED, cb);
 
-        this.promise = new BPromise((resolve, reject) => {
+        this.promise = new Bluebird((resolve, reject) => {
             this.e.once(States.TIMES_OUT, resolve);
             this.e.once(States.INTERRUPTED, reject);
         });
         this.promise.catch(() => { });
     }
+
     interrupt() {
         assert(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;

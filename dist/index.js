@@ -13,17 +13,15 @@ var States;
     States["INTERRUPTED"] = "INTERRUPTED";
 })(States || (States = {}));
 class Timer {
-    constructor(ms, cb) {
+    constructor(ms, cb = () => { }) {
         this.e = new events_1.default();
         this.state = States.RUNNING;
         this.timer = setTimeout(() => {
             this.state = States.TIMES_OUT;
             this.e.emit(States.TIMES_OUT);
         }, ms);
-        if (cb) {
-            this.e.once(States.TIMES_OUT, cb);
-            this.e.once(States.INTERRUPTED, cb);
-        }
+        this.e.once(States.TIMES_OUT, cb);
+        this.e.once(States.INTERRUPTED, cb);
         this.promise = new bluebird_1.default((resolve, reject) => {
             this.e.once(States.TIMES_OUT, resolve);
             this.e.once(States.INTERRUPTED, reject);

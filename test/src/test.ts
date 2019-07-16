@@ -1,7 +1,7 @@
-import { Promise as BPromise } from 'bluebird';
+import Bluebird from 'bluebird';
 import test from 'ava';
-import sinon = require('sinon');
-import assert = require('assert');
+import sinon from 'sinon';
+import assert from 'assert';
 import Timer from '../..';
 
 test('resolution test', async t => {
@@ -13,7 +13,7 @@ test('resolution test', async t => {
 test('rejection test', async t => {
     const cb = sinon.fake();
     let timer = new Timer(2 * 1000, cb);
-    BPromise.delay(1 * 1000).then(() => {
+    Bluebird.delay(1 * 1000).then(() => {
         timer.interrupt();
     });
     await assert.rejects(timer.promise);
