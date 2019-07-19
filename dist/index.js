@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bluebird_1 = __importDefault(require("bluebird"));
 const assert_1 = __importDefault(require("assert"));
 const events_1 = __importDefault(require("events"));
+const timers_1 = __importDefault(require("timers"));
 var States;
 (function (States) {
     States["RUNNING"] = "RUNNING";
@@ -16,7 +17,7 @@ class Timer {
     constructor(ms, cb = () => { }) {
         this.e = new events_1.default();
         this.state = States.RUNNING;
-        this.timer = setTimeout(() => {
+        this.timer = timers_1.default.setTimeout(() => {
             this.state = States.TIMES_OUT;
             this.e.emit(States.TIMES_OUT);
         }, ms);
@@ -31,7 +32,7 @@ class Timer {
     interrupt() {
         assert_1.default(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
-        clearTimeout(this.timer);
+        timers_1.default.clearTimeout(this.timer);
         this.e.emit(States.INTERRUPTED, new Error('interrupted'));
     }
 }

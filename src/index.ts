@@ -1,6 +1,7 @@
 import Bluebird from 'bluebird';
 import assert from 'assert';
 import EventEmitter from 'events';
+import timers from 'timers';
 
 enum States {
     RUNNING = 'RUNNING',
@@ -17,7 +18,7 @@ class Timer {
     constructor(ms: number, cb: (err?: Error) => void = () => { }) {
         this.e = new EventEmitter();
         this.state = States.RUNNING;
-        this.timer = setTimeout(() => {
+        this.timer = timers.setTimeout(() => {
             this.state = States.TIMES_OUT;
             this.e.emit(States.TIMES_OUT);
         }, ms);
@@ -35,7 +36,7 @@ class Timer {
     interrupt() {
         assert(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
-        clearTimeout(this.timer);
+        timers.clearTimeout(this.timer);
         this.e.emit(States.INTERRUPTED, new Error('interrupted'));
     }
 };

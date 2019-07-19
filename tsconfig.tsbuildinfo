@@ -138,7 +138,7 @@
         "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
       },
       "/home/zim/interruptible-timer/src/index.ts": {
-        "version": "98d4ca2786bf80cd22e093da4de39dc136171419cba8c1614f2788f9889d2b12",
+        "version": "3bfc6a387ca0e998a844ae00be7d2a56f61f58eb3600cfa39d16d6671b627e62",
         "signature": "1cc0eb9d42a34d44934eccec43741b6281d70631812e59a3bb6af11299341511"
       },
       "/home/zim/interruptible-timer/node_modules/@types/node/globals.d.ts": {
@@ -491,6 +491,7 @@
         "/home/zim/interruptible-timer/node_modules/@types/bluebird/index.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/assert.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/events.d.ts",
+        "/home/zim/interruptible-timer/node_modules/@types/node/timers.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/util.d.ts",
         "/home/zim/interruptible-timer/node_modules/@types/node/ts3.2/util.d.ts"
       ],
