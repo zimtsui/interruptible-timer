@@ -1,1 +1,0 @@
-export { default as EventEmitter } from 'https://cdn.deno.land/std/versions/0.66.0/raw/node/events.ts';

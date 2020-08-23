@@ -1,16 +1,17 @@
-import { EventEmitter } from '../deps.ts';
-const { assert } = console;
+import EventEmitter from "eventemitter3";
+import chai from "chai";
+const { assert } = chai;
 
 const enum States {
-    RUNNING = 'RUNNING',
-    TIMES_OUT = 'TIMES_OUT',
-    INTERRUPTED = 'INTERRUPTED',
+    RUNNING = "RUNNING",
+    TIMES_OUT = "TIMES_OUT",
+    INTERRUPTED = "INTERRUPTED",
 }
 
 class Timer {
     private state = States.RUNNING;
     private e = new EventEmitter();
-    private timer: number;
+    private timer: NodeJS.Timer;
     promise: Promise<void>;
 
     constructor(ms: number, cb: (err?: Error) => void = () => { }) {
@@ -33,11 +34,11 @@ class Timer {
         assert(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
         clearTimeout(this.timer);
-        this.e.emit(States.INTERRUPTED, new Error('interrupted'));
+        this.e.emit(States.INTERRUPTED, new Error("interrupted"));
     }
 }
 
 export {
     Timer as default,
     Timer,
-}
+};
