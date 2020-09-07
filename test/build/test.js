@@ -9,12 +9,12 @@ const { fake } = sinon;
 const { assert } = chai;
 test('resolution test', async (t) => {
     const cb = fake();
-    await new Timer(1000, cb).promise;
+    await new Timer(1000, cb, setTimeout, clearTimeout).promise;
     assert(cb.args[0].length === 0);
 });
 test('rejection test', async (t) => {
     const cb = fake();
-    let timer = new Timer(2 * 1000, cb);
+    let timer = new Timer(2 * 1000, cb, setTimeout, clearTimeout);
     Bluebird.delay(1 * 1000).then(() => {
         timer.interrupt();
     });

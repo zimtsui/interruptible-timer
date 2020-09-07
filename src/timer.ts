@@ -8,14 +8,27 @@ const enum States {
     INTERRUPTED = "INTERRUPTED",
 }
 
-class Timer {
+interface SetTimeout<Timeout> {
+    (cb: () => unknown, ms: number): Timeout;
+}
+
+interface ClearTimeout<Timeout> {
+    (timeout: Timeout): unknown;
+}
+
+class Timer<Timeout> {
     private state = States.RUNNING;
     private e = new EventEmitter();
-    private timer: NodeJS.Timer;
+    private timeout: Timeout;
     promise: Promise<void>;
 
-    constructor(ms: number, cb: (err?: Error) => void = () => { }) {
-        this.timer = setTimeout(() => {
+    constructor(
+        ms: number,
+        cb: (err?: Error) => void = () => { },
+        private setTimeout: SetTimeout<Timeout>,
+        private clearTimeout: ClearTimeout<Timeout>,
+    ) {
+        this.timeout = this.setTimeout(() => {
             this.state = States.TIMES_OUT;
             this.e.emit(States.TIMES_OUT);
         }, ms);
@@ -33,7 +46,7 @@ class Timer {
     interrupt() {
         assert(this.state === States.RUNNING);
         this.state = States.INTERRUPTED;
-        clearTimeout(this.timer);
+        this.clearTimeout(this.timeout);
         this.e.emit(States.INTERRUPTED, new Error("interrupted"));
     }
 }
