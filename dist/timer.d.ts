@@ -14,4 +14,4 @@ declare class Timer<Timeout> {
     constructor(ms: number, cb: ((err?: Error | undefined) => void) | undefined, setTimeout: SetTimeout<Timeout>, clearTimeout: ClearTimeout<Timeout>);
     interrupt(): void;
 }
-export { Timer as default, Timer, };
+export { Timer as default, Timer, SetTimeout, ClearTimeout, };

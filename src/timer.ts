@@ -54,4 +54,6 @@ class Timer<Timeout> {
 export {
     Timer as default,
     Timer,
+    SetTimeout,
+    ClearTimeout,
 };
