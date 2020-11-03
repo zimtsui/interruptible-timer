@@ -21,8 +21,9 @@
     "homepage": "https://github.com/zimtsui/interruptible-timer#readme",
     "dependencies": {
         "@types/chai": "^4.2.12",
+        "@types/events": "^3.0.0",
         "chai": "^4.2.0",
-        "eventemitter3": "^4.0.5"
+        "events": "^3.2.0"
     },
     "devDependencies": {
         "@types/node": "^14.6.0",

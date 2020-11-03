@@ -1,4 +1,4 @@
-import EventEmitter from "eventemitter3";
+import { EventEmitter } from "events";
 import chai from "chai";
 const { assert } = chai;
 class Timer {
