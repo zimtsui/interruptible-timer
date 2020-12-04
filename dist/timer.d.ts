@@ -1,17 +1,10 @@
-interface SetTimeout<Timeout> {
-    (cb: () => unknown, ms: number): Timeout;
-}
-interface ClearTimeout<Timeout> {
-    (timeout: Timeout): unknown;
-}
-declare class Timer<Timeout> {
+/// <reference types="node" />
+declare class Timer {
     private setTimeout;
     private clearTimeout;
-    private state;
-    private e;
-    private timeout;
-    promise: Promise<void>;
-    constructor(ms: number, cb: ((err?: Error | undefined) => void) | undefined, setTimeout: SetTimeout<Timeout>, clearTimeout: ClearTimeout<Timeout>);
+    private bluebird;
+    readonly promise: Promise<void>;
+    constructor(ms: number, setTimeout?: ((callback: (...args: any[]) => void, ms: number, ...args: any[]) => NodeJS.Timeout) & typeof globalThis.setTimeout, clearTimeout?: ((timeoutId: NodeJS.Timeout) => void) & typeof globalThis.clearTimeout);
     interrupt(): void;
 }
-export { Timer as default, Timer, SetTimeout, ClearTimeout, };
+export { Timer as default, Timer, };

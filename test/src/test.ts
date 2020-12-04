@@ -8,15 +8,16 @@ chai.use(chaiAsPromised);
 const { fake } = sinon;
 const { assert } = chai;
 
-test('resolution test', async t => {
+test('fulfillment test', async t => {
     const cb = fake();
-    await new Timer(1000, cb, setTimeout, clearTimeout).promise;
-    assert(cb.args[0].length === 0);
+    await new Timer(1000).promise.then(cb);
+    assert(cb.callCount === 1);
 });
 
 test('rejection test', async t => {
     const cb = fake();
-    let timer = new Timer(2 * 1000, cb, setTimeout, clearTimeout);
+    let timer = new Timer(2 * 1000);
+    timer.promise.catch(cb);
     Bluebird.delay(1 * 1000).then(() => {
         timer.interrupt();
     });

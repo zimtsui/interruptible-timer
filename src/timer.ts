@@ -1,59 +1,37 @@
-import { EventEmitter } from "events";
-import chai from "chai";
-const { assert } = chai;
+import Bluebird from 'bluebird';
 
-const enum States {
-    RUNNING = "RUNNING",
-    TIMES_OUT = "TIMES_OUT",
-    INTERRUPTED = "INTERRUPTED",
-}
+Bluebird.config({
+    cancellation: true,
+});
 
-interface SetTimeout<Timeout> {
-    (cb: () => unknown, ms: number): Timeout;
-}
-
-interface ClearTimeout<Timeout> {
-    (timeout: Timeout): unknown;
-}
-
-class Timer<Timeout> {
-    private state = States.RUNNING;
-    private e = new EventEmitter();
-    private timeout: Timeout;
-    promise: Promise<void>;
+class Timer {
+    private bluebird: Bluebird<void>;
+    public readonly promise: Promise<void>;
 
     constructor(
         ms: number,
-        cb: (err?: Error) => void = () => { },
-        private setTimeout: SetTimeout<Timeout>,
-        private clearTimeout: ClearTimeout<Timeout>,
+        private setTimeout = global.setTimeout,
+        private clearTimeout = global.clearTimeout,
     ) {
-        this.timeout = this.setTimeout(() => {
-            this.state = States.TIMES_OUT;
-            this.e.emit(States.TIMES_OUT);
-        }, ms);
-
-        this.e.once(States.TIMES_OUT, cb);
-        this.e.once(States.INTERRUPTED, cb);
-
-        this.promise = new Promise((resolve, reject) => {
-            this.e.once(States.TIMES_OUT, resolve);
-            this.e.once(States.INTERRUPTED, reject);
+        this.bluebird = new Bluebird<void>((resolve, reject, onCancel) => {
+            const timeout = this.setTimeout(resolve, ms);
+            onCancel!(() => {
+                this.clearTimeout(timeout);
+            });
         });
-        this.promise.catch(() => { });
+
+        this.promise = this.bluebird.reflect()
+            .then(inspection => {
+                if (inspection.isCancelled()) throw new Error('Cancelled');
+            });
     }
 
-    interrupt() {
-        assert(this.state === States.RUNNING);
-        this.state = States.INTERRUPTED;
-        this.clearTimeout(this.timeout);
-        this.e.emit(States.INTERRUPTED, new Error("interrupted"));
+    public interrupt() {
+        this.bluebird.cancel();
     }
 }
 
 export {
     Timer as default,
     Timer,
-    SetTimeout,
-    ClearTimeout,
 };

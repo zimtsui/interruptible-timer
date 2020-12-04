@@ -1,29 +1,25 @@
-import { EventEmitter } from "events";
-import chai from "chai";
-const { assert } = chai;
+import Bluebird from 'bluebird';
+Bluebird.config({
+    cancellation: true,
+});
 class Timer {
-    constructor(ms, cb = () => { }, setTimeout, clearTimeout) {
+    constructor(ms, setTimeout = global.setTimeout, clearTimeout = global.clearTimeout) {
         this.setTimeout = setTimeout;
         this.clearTimeout = clearTimeout;
-        this.state = "RUNNING" /* RUNNING */;
-        this.e = new EventEmitter();
-        this.timeout = this.setTimeout(() => {
-            this.state = "TIMES_OUT" /* TIMES_OUT */;
-            this.e.emit("TIMES_OUT" /* TIMES_OUT */);
-        }, ms);
-        this.e.once("TIMES_OUT" /* TIMES_OUT */, cb);
-        this.e.once("INTERRUPTED" /* INTERRUPTED */, cb);
-        this.promise = new Promise((resolve, reject) => {
-            this.e.once("TIMES_OUT" /* TIMES_OUT */, resolve);
-            this.e.once("INTERRUPTED" /* INTERRUPTED */, reject);
+        this.bluebird = new Bluebird((resolve, reject, onCancel) => {
+            const timeout = this.setTimeout(resolve, ms);
+            onCancel(() => {
+                this.clearTimeout(timeout);
+            });
         });
-        this.promise.catch(() => { });
+        this.promise = this.bluebird.reflect()
+            .then(inspection => {
+            if (inspection.isCancelled())
+                throw new Error('Cancelled');
+        });
     }
     interrupt() {
-        assert(this.state === "RUNNING" /* RUNNING */);
-        this.state = "INTERRUPTED" /* INTERRUPTED */;
-        this.clearTimeout(this.timeout);
-        this.e.emit("INTERRUPTED" /* INTERRUPTED */, new Error("interrupted"));
+        this.bluebird.cancel();
     }
 }
 export { Timer as default, Timer, };
