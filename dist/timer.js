@@ -1,25 +1,16 @@
-import Bluebird from 'bluebird';
-Bluebird.config({
-    cancellation: true,
-});
+import WebTimer from './web-timer';
 class Timer {
-    constructor(ms, setTimeout = global.setTimeout, clearTimeout = global.clearTimeout) {
+    constructor(ms, setTimeout = WebTimer.setTimeout, clearTimeout = WebTimer.clearTimeout) {
         this.setTimeout = setTimeout;
         this.clearTimeout = clearTimeout;
-        this.bluebird = new Bluebird((resolve, reject, onCancel) => {
-            const timeout = this.setTimeout(resolve, ms);
-            onCancel(() => {
-                this.clearTimeout(timeout);
-            });
-        });
-        this.promise = this.bluebird.reflect()
-            .then(inspection => {
-            if (inspection.isCancelled())
-                throw new Error('Cancelled');
+        this.promise = new Promise((resolve, reject) => {
+            this.id = this.setTimeout(resolve, ms);
+            this.reject = reject;
         });
     }
     interrupt() {
-        this.bluebird.cancel();
+        this.clearTimeout(this.id);
+        this.reject(new Error('Interrupted'));
     }
 }
 export { Timer as default, Timer, };

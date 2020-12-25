@@ -8,9 +8,10 @@ interface ClearTimeout {
 declare class Timer {
     private setTimeout;
     private clearTimeout;
-    private bluebird;
-    readonly promise: Promise<void>;
+    promise: Promise<void>;
+    private reject?;
+    private id?;
     constructor(ms: number, setTimeout?: SetTimeout, clearTimeout?: ClearTimeout);
     interrupt(): void;
 }
-export { Timer as default, Timer, SetTimeout, ClearTimeout, };
+export { Timer as default, Timer, SetTimeout, ClearTimeout, TimerId, };

@@ -1,11 +1,6 @@
-import Bluebird from 'bluebird';
-
-Bluebird.config({
-    cancellation: true,
-});
+import WebTimer from './web-timer';
 
 type TimerId = any;
-
 interface SetTimeout {
     (cb: () => void, ms: number): TimerId;
 }
@@ -14,29 +9,24 @@ interface ClearTimeout {
 }
 
 class Timer {
-    private bluebird: Bluebird<void>;
-    public readonly promise: Promise<void>;
+    public promise: Promise<void>;
+    private reject?: (err: Error) => void;
+    private id?: TimerId;
 
     constructor(
         ms: number,
-        private setTimeout: SetTimeout = global.setTimeout,
-        private clearTimeout: ClearTimeout = global.clearTimeout,
+        private setTimeout: SetTimeout = WebTimer.setTimeout,
+        private clearTimeout: ClearTimeout = WebTimer.clearTimeout,
     ) {
-        this.bluebird = new Bluebird<void>((resolve, reject, onCancel) => {
-            const timeout = this.setTimeout(resolve, ms);
-            onCancel!(() => {
-                this.clearTimeout(timeout);
-            });
+        this.promise = new Promise((resolve, reject) => {
+            this.id = this.setTimeout(resolve, ms);
+            this.reject = reject;
         });
-
-        this.promise = this.bluebird.reflect()
-            .then(inspection => {
-                if (inspection.isCancelled()) throw new Error('Cancelled');
-            });
     }
 
     public interrupt() {
-        this.bluebird.cancel();
+        this.clearTimeout(this.id!);
+        this.reject!(new Error('Interrupted'));
     }
 }
 
@@ -45,4 +35,5 @@ export {
     Timer,
     SetTimeout,
     ClearTimeout,
+    TimerId,
 };

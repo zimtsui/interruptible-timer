@@ -1,5 +1,3 @@
-// https://nodejs.org/dist/latest-v14.x/docs/api/timers.html#timers_settimeout_callback_delay_args
-
 export namespace WebTimer {
     export type GlobalTimeout = ReturnType<typeof global.setTimeout>;
     export type GlobalImmediate = ReturnType<typeof global.setImmediate>;
