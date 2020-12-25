@@ -43,4 +43,6 @@ class Timer {
 export {
     Timer as default,
     Timer,
+    SetTimeout,
+    ClearTimeout,
 };

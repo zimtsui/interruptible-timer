@@ -13,4 +13,4 @@ declare class Timer {
     constructor(ms: number, setTimeout?: SetTimeout, clearTimeout?: ClearTimeout);
     interrupt(): void;
 }
-export { Timer as default, Timer, };
+export { Timer as default, Timer, SetTimeout, ClearTimeout, };
