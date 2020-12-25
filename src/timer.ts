@@ -4,14 +4,23 @@ Bluebird.config({
     cancellation: true,
 });
 
+type TimerId = any;
+
+interface SetTimeout {
+    (cb: () => void, ms: number): TimerId;
+}
+interface ClearTimeout {
+    (id: TimerId): void;
+}
+
 class Timer {
     private bluebird: Bluebird<void>;
     public readonly promise: Promise<void>;
 
     constructor(
         ms: number,
-        private setTimeout = global.setTimeout,
-        private clearTimeout = global.clearTimeout,
+        private setTimeout: SetTimeout = global.setTimeout,
+        private clearTimeout: ClearTimeout = global.clearTimeout,
     ) {
         this.bluebird = new Bluebird<void>((resolve, reject, onCancel) => {
             const timeout = this.setTimeout(resolve, ms);

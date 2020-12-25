@@ -207,13 +207,8 @@
         "affectsGlobalScope": false
       },
       "./src/timer.ts": {
-        "version": "00fbde94678092e4495f6a704d78276ce0fc2fae855a5438d5669eb935d9ecf0",
-        "signature": "c32753a82f6a40bbbe42e99dcae460cd965f241f4b9a6074bc0b6f482792bead",
-        "affectsGlobalScope": false
-      },
-      "./src/index.ts": {
-        "version": "6c3c8b5f6ea966c6713882651917401c3fb9d41a6e0a319793f22fc999382abe",
-        "signature": "d1172df359f13a3bc4f49f1cc5053799cd874957d8d05f55f07ad5249d4360f6",
+        "version": "d80036c9e1b592ab875743cfada130c6a780f49afb610c1609f0f778abaa32d6",
+        "signature": "58e63499f956470f8b1d9f6253dd2e0a7abb7f20c2f577ca8b65763a0c1a5cac",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/chai/index.d.ts": {
@@ -564,7 +559,7 @@
     },
     "options": {
       "target": 7,
-      "module": 5,
+      "module": 99,
       "moduleResolution": 2,
       "lib": [
         "lib.esnext.d.ts"
@@ -811,9 +806,6 @@
       ],
       "./node_modules/@types/sinon/index.d.ts": [
         "./node_modules/@types/sinonjs__fake-timers/index.d.ts"
-      ],
-      "./src/index.ts": [
-        "./src/timer.ts"
       ],
       "./src/timer.ts": [
         "./node_modules/@types/bluebird/index.d.ts"
@@ -1073,9 +1065,6 @@
         "./node_modules/@types/node/ts3.4/fs.d.ts",
         "./node_modules/@types/node/ts3.4/process.d.ts",
         "./node_modules/@types/node/ts3.4/util.d.ts"
-      ],
-      "./src/index.ts": [
-        "./src/timer.ts"
       ],
       "../../../../usr/local/lib/node_modules/typescript/lib/lib.es2015.collection.d.ts": [
         "./node_modules/@types/node/fs.d.ts",
@@ -1469,7 +1458,6 @@
       "./node_modules/@types/normalize-package-data/index.d.ts",
       "./node_modules/@types/sinon/index.d.ts",
       "./node_modules/@types/sinonjs__fake-timers/index.d.ts",
-      "./src/index.ts",
       "./src/timer.ts",
       "../../../../usr/local/lib/node_modules/typescript/lib/lib.es2015.collection.d.ts",
       "../../../../usr/local/lib/node_modules/typescript/lib/lib.es2015.core.d.ts",
