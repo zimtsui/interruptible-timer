@@ -11,7 +11,8 @@ declare class Timer {
     promise: Promise<void>;
     private reject?;
     private id?;
-    constructor(ms: number, setTimeout?: SetTimeout, clearTimeout?: ClearTimeout);
+    constructor(ms: number, setTimeout: SetTimeout, clearTimeout: ClearTimeout);
+    constructor(ms: number);
     interrupt(): void;
 }
-export { Timer as default, Timer, SetTimeout, ClearTimeout, TimerId, };
+export { Timer as default, Timer, SetTimeout, ClearTimeout, };

@@ -15,6 +15,14 @@ class Timer {
 
     constructor(
         ms: number,
+        setTimeout: SetTimeout,
+        clearTimeout: ClearTimeout,
+    );
+    constructor(
+        ms: number,
+    );
+    constructor(
+        ms: number,
         private setTimeout: SetTimeout = WebTimer.setTimeout,
         private clearTimeout: ClearTimeout = WebTimer.clearTimeout,
     ) {
@@ -35,5 +43,4 @@ export {
     Timer,
     SetTimeout,
     ClearTimeout,
-    TimerId,
 };
