@@ -2,16 +2,16 @@ export var WebTimer;
 (function (WebTimer) {
     function setTimeout(cb, ms) {
         if (ms)
-            return [ms, global.setTimeout(cb, ms)];
+            return [ms, globalThis.setTimeout(cb, ms)];
         else
-            return [ms, global.setImmediate(cb)];
+            return [ms, globalThis.setImmediate(cb)];
     }
     WebTimer.setTimeout = setTimeout;
     function clearTimeout([ms, id]) {
         if (ms)
-            global.clearTimeout(id);
+            globalThis.clearTimeout(id);
         else
-            global.clearImmediate(id);
+            globalThis.clearImmediate(id);
     }
     WebTimer.clearTimeout = clearTimeout;
 })(WebTimer || (WebTimer = {}));
